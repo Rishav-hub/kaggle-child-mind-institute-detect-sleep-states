@@ -1,5 +1,6 @@
 import logging
 from pathlib import Path
+import shutil
 
 import hydra
 import torch
@@ -88,6 +89,9 @@ def main(cfg: TrainConfig):
     LOGGER.info(f"Extracting and saving best weights: {weights_path}")
     torch.save(model.model.state_dict(), weights_path)
 
+
+    shutil.copy('/content/output/train/dummy/single/best_model.pth', '/content/drive/MyDrive/001_projects/DSS/DSS/models/lstm_128_4_anglez_augmentation/fold_0.pth')
+    shutil.copy('/content/output/train/dummy/single/best_model_score.pth', '/content/drive/MyDrive/001_projects/DSS/DSS/models/lstm_128_4_anglez_augmentation/fold_0_score.pth')
     return
 
 
