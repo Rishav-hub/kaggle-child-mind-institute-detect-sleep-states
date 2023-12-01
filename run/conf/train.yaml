@@ -16,18 +16,18 @@ defaults:
   - model: Spec2DCNN
   - feature_extractor: LSTMFeatureExtractor
   - decoder: UNet1DDecoder
-  - split: kfold_2
+  - split: fold_0
 
 seed: 42
 exp_name: dummy
 batch_size: 32
-num_workers: 24
+num_workers: 8
 duration: 5760 # duration * 5 = 秒数
 downsample_rate: 2
 upsample_rate: 1
 
 trainer:
-  epochs: 50
+  epochs: 70
   accelerator: auto
   use_amp: true
   debug: false
@@ -38,9 +38,9 @@ trainer:
   check_val_every_n_epoch: 1
 
 aug:
-  mixup_prob: 0.0
+  mixup_prob: 0.2
   mixup_alpha: 0.4
-  cutmix_prob: 0.0
+  cutmix_prob: 0.2
   cutmix_alpha: 0.4
   
 # post_process
