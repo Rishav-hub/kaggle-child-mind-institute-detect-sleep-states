@@ -119,13 +119,9 @@ class PLSleepModel(LightningModule):
 
         self.validation_step_outputs.clear()
 
-    # def configure_optimizers(self):
-    #     optimizer = optim.AdamW(self.parameters(), lr=self.cfg.optimizer.lr)
-    #     scheduler = get_cosine_schedule_with_warmup(
-    #         optimizer, num_training_steps=self.trainer.max_steps, **self.cfg.scheduler
-    #     )
-    #     return [optimizer], [{"scheduler": scheduler, "interval": "step"}]
     def configure_optimizers(self):
-        optimizer = optim.SGD(self.parameters(), lr=self.cfg.optimizer.lr, weight_decay=1e-4, momentum=0.9, nesterov=True)
-        scheduler = CosineAnnealingLR(optimizer, T_max=self.trainer.max_steps, eta_min=0)
+        optimizer = optim.AdamW(self.parameters(), lr=self.cfg.optimizer.lr)
+        scheduler = get_cosine_schedule_with_warmup(
+            optimizer, num_training_steps=self.trainer.max_steps, **self.cfg.scheduler
+        )
         return [optimizer], [{"scheduler": scheduler, "interval": "step"}]
