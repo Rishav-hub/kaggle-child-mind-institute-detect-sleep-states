@@ -1,12 +1,12 @@
 name: TransformerCNNDecoder
-# params:
-#   hidden_size: 256
-#   num_layers: 4
-#   nhead: 4
-#   dropout: 0.2
-
 params:
-  hidden_size: 512
-  num_layers: 5
-  nhead: 8
+  hidden_size: 256
+  num_layers: 4
+  nhead: 4
   dropout: 0.2
+
+# params:
+#   hidden_size: 512
+#   num_layers: 5
+#   nhead: 8
+#   dropout: 0.2

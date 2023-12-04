@@ -15,8 +15,8 @@ defaults:
   - dataset: seg
   - model: Spec2DCNN
   - feature_extractor: LSTMFeatureExtractor
-  - decoder: UNet1DDecoder
-  - split: fold_0_all
+  - decoder: TransformerCNNDecoder
+  - split: kfold_3
 
 seed: 42
 exp_name: dummy
@@ -27,7 +27,7 @@ downsample_rate: 2
 upsample_rate: 1
 
 trainer:
-  epochs: 70
+  epochs: 50
   accelerator: auto
   use_amp: true
   debug: false
