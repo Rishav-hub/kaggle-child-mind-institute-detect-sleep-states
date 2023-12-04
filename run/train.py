@@ -76,6 +76,9 @@ def main(cfg: TrainConfig):
 
     trainer.fit(model, datamodule=datamodule)
 
+    torch.save(model.state_dict(), "last_epoch_fold_3.pth")
+
+
     # load best weights
     model = model.load_from_checkpoint(
         checkpoint_cb.best_model_path,
